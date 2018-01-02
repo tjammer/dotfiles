@@ -1,0 +1,21 @@
+#!/bin/bash
+# Description: A simple Todo List using notify-send
+
+image='/home/mohabaks/Pictures/notify/todo/todo.jpg'
+
+. $HOME/.local/bin/color-parser
+
+notify-send -i $image "<span foreground='$FG'>
+<span foreground='$BMAGENTA' >    TODO Weekdays </span> 
+<span foreground='$RED' >    -=-=-=-=-=-=-</span> 
+<span foreground='$BLUE'>1. </span>The Shellcoder's <span foreground='$FG'></span>
+<span foreground='$BLUE'>2. </span>The Hack Art     <span foreground='$FG'></span>
+<span foreground='$BLUE'>3. </span>Comp Netw        <span foreground='$FG'></span>
+<span foreground='$BLUE'>4. </span>Crypto           <span foreground='$FG'></span>
+<span foreground='$BLUE'>5. </span>Hackers Play     <span foreground='$FG'></span>
+<span foreground='$BLUE'>6. </span>Unix Stuff       <span foreground='$FG'></span>
+<span foreground='$BLUE'>7. </span>Metasploitable   <span foreground='$FG'></span>
+<span foreground='$BLUE'>8. </span>C code           <span
+foreground='$FG'></span>
+</span>
+"

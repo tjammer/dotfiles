@@ -1,0 +1,57 @@
+sw_volume: 92
+audio_device_state:1:pulse audio
+audio_device_state:1:my_fifo
+state: play
+current: 37
+time: 1.010000
+random: 0
+repeat: 1
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:DJ Koze/DJ Koze - DJ-Kicks (2015) FLAC/01. DJ Koze - I Haven't Been Everywhere But It's On My List (DJ-Kicks).flac
+1:Slum Village/Fantastic Vol. 1/01 Fantastic.mp3
+2:Slum Village/Fantastic Vol. 1/02 Keep It On [This Beat].mp3
+3:Slum Village/Fantastic Vol. 1/03 I Don't Know.mp3
+4:Slum Village/Fantastic Vol. 1/04 How We Bullshit.mp3
+5:Slum Village/Fantastic Vol. 1/05 Fat Cat Song.mp3
+6:Slum Village/Fantastic Vol. 1/06 The Look Of Love.mp3
+7:Slum Village/Fantastic Vol. 1/07 Estimate.mp3
+8:Slum Village/Fantastic Vol. 1/09 Beej N Dem.mp3
+9:Slum Village/Fantastic Vol. 1/10 Pregnant [T3].mp3
+10:Slum Village/Fantastic Vol. 1/11 Forth & Back [Rock Music].mp3
+11:Slum Village/Fantastic Vol. 1/12 Fantastic 2.mp3
+12:Slum Village/Fantastic Vol. 1/13 Fantastic 3.mp3
+13:Slum Village/Fantastic Vol. 1/15 5 Ela Remix.mp3
+14:Slum Village/Fantastic Vol. 1/16 Give This Nigga.mp3
+15:Slum Village/Fantastic Vol. 1/17 Players.mp3
+16:Slum Village/Fantastic Vol. 1/18 Look of Love [Remix].mp3
+17:Slum Village/Fantastic Vol. 1/19 Pregnant [Baatin].mp3
+18:Slum Village/Fantastic Vol. 1/22 Fantastic 4.mp3
+19:Slum Village/Fantastic Vol. 1/08 Hoc N Pucky.mp3
+20:Slum Village/Fantastic Vol. 1/14 Keep it On [Remix].mp3
+21:Slum Village/Fantastic Vol. 1/20 Things U Do [Remix].mp3
+22:Slum Village/Fantastic Vol. 1/21 Fat Cat [Remix].mp3
+23:Slum Village/Fantastic Vol. 2/01-Intro.mp3
+24:Slum Village/Fantastic Vol. 2/02-Conant Gardens.mp3
+25:Slum Village/Fantastic Vol. 2/03-I Don't Know.mp3
+26:Slum Village/Fantastic Vol. 2/04-Jealousy.mp3
+27:Slum Village/Fantastic Vol. 2/05-Climax (Girl Shit).mp3
+28:Slum Village/Fantastic Vol. 2/06-Hold Tight.mp3
+29:Slum Village/Fantastic Vol. 2/07-Tell Me.mp3
+30:Slum Village/Fantastic Vol. 2/08-What It's All About.mp3
+31:Slum Village/Fantastic Vol. 2/09-Forth And Back.mp3
+32:Slum Village/Fantastic Vol. 2/10-Untitled_Fantastic.mp3
+33:Slum Village/Fantastic Vol. 2/11-Fall In Love.mp3
+34:Slum Village/Fantastic Vol. 2/12-Get Dis Money.mp3
+35:Slum Village/Fantastic Vol. 2/13-Raise It Up.mp3
+36:Slum Village/Fantastic Vol. 2/14-Once Upon A Time.mp3
+37:Slum Village/Fantastic Vol. 2/15-Players.mp3
+38:Slum Village/Fantastic Vol. 2/16-Eyes Up.mp3
+39:Slum Village/Fantastic Vol. 2/17-2U4U.mp3
+40:Slum Village/Fantastic Vol. 2/18-CB4.mp3
+41:Slum Village/Fantastic Vol. 2/19-Go Ladies.mp3
+playlist_end
