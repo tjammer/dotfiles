@@ -1,9 +1,0 @@
-feh --bg-fill /usr/share/wallpapers/DebianTheme/contents/images/1600x1200.png &
-sh $HOME/.config/openbox/lightsOn.sh &
-xset dpms 300 &
-xss-lock slock &
-pytyle2 &
-$HOME/.tmp/dots/scripts/fonts.sh
-$HOME/.tmp/dots/scripts/bar.sh &
-sleep 3
-trayer --expand true --transparent true --alpha 0 --tint 0xf8818e --edge top --align right --expand true --SetDockType true --widthtype request --height 30 &

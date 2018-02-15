@@ -1,4 +1,4 @@
-feh --bg-fill $HOME/.config/openbox/sunset.jpg
+feh --bg-fill $HOME/.config/openbox/wp.jpg
 #pcmanfm --desktop&
 xset dpms 300 &
 xss-lock slock &
