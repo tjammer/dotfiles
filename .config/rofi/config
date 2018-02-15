@@ -21,7 +21,7 @@ rofi.fullscreen:         false
 ! ------------------------------------------------------------------------------
 !                      ROFI Color theme
 ! ------------------------------------------------------------------------------
-rofi.color-window: #051519, #051519, #f2777a
-rofi.color-normal: #051519, #ffffff, #051519, #f2777a, #051519
-rofi.color-active: #051519, #ffffff, #051519, #f2777a, #051519
-rofi.color-urgent: #051519, #69584E, #051519, #69584E, #ffffff
+rofi.color-window: #292d3e, #292d3e, #c792ea
+rofi.color-normal: #292d3e, #bfc7d5, #292d3e, #c792ea, #292d3e
+rofi.color-active: #292d3e, #bfc7d5, #292d3e, #c792ea, #292d3e
+rofi.color-urgent: #292d3e, #69584E, #292d3e, #69584E, #bfc7d5

@@ -22,15 +22,16 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'drmikehenry/vim-headerguard'
 Plugin 'tikhomirov/vim-glsl'
-Plugin 'vim-airline/vim-airline'
-Plugin 'drewtempelmeyer/palenight.vim'
+Plugin 'itchyny/lightline.vim'
 Plugin 'dcharbon/vim-flatbuffers'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'kien/ctrlp.vim'
+Plugin 'MarcWeber/vim-addon-local-vimrc'
 " themes
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'gregsexton/Atom'
-Plugin 'scheakur/vim-scheakur'
+Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'ayu-theme/ayu-vim'
+Plugin 'NerdyPepper/agila.vim'
+Plugin 'kaicataldo/material.vim'
 
 "
 " " All of your Plugins must be added before the following line
@@ -44,16 +45,10 @@ set termguicolors
  nnoremap <C-L> <C-W><C-L>
  nnoremap <C-H> <C-W><C-H>
 
-
-
-    nmap <c-c> <esc>
-
-    imap <c-c> <esc>
-
-    vmap <c-c> <esc>
-
-    omap <c-c> <esc>
-
+ nmap <c-c> <esc>
+ imap <c-c> <esc>
+ vmap <c-c> <esc>
+ omap <c-c> <esc>
 
 set tabstop=2 |
 set softtabstop=2 |
@@ -90,27 +85,31 @@ nnoremap <c-t> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
+
+" colors
 set background=dark
-colorscheme ayu
-let g:airline_theme = 'onedark'
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ 'active':  {
+		    \ 'left': [ [ 'mode', 'paste' ],
+		    \           [ 'readonly', 'filename', 'modified', 'gitbranch' ] ] },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+      \ }
+colorscheme palenight
 
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_extra_conf.py'
 set nohlsearch
 
-"set guifont="Fira\ Mono\ for\ Powerline\ Regular"
-let g:airline_powerline_fonts = 1
-
 " spaces
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·
 "set list!
 
-let g:clang_format#style_options = {
-  \ "BasedOnStyle": "Mozilla",
-  \ "SortIncludes": "false"}
-let g:clang_format#auto_format = 1
-let g:clang_format#auto_format_on_insert_leave = 1
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>

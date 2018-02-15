@@ -7,6 +7,8 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar
-polybar -c $HOME/.config/polybar/config top &
+#polybar -c $HOME/.config/polybar/config top &
+polybar -c $HOME/.config/polybar/config info &
+polybar -c $HOME/.config/polybar/config date &
 
 echo "Bars launched..."
