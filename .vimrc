@@ -13,7 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 " instead of Plugin)
 Plugin 'lyuts/vim-rtags'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+"Plugin 'w0rp/ale'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tikhomirov/vim-glsl'
@@ -22,6 +23,7 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'kien/ctrlp.vim'
 Plugin 'MarcWeber/vim-addon-local-vimrc'
 Plugin 'rust-lang/rust.vim'
+Plugin 'lervag/vimtex'
 " nicer things
 Plugin 'itchyny/lightline.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -29,9 +31,12 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'drmikehenry/vim-headerguard'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'Valloric/ListToggle'
 " themes
 Plugin 'drewtempelmeyer/palenight.vim'
 Plugin 'arcticicestudio/nord-vim'
+Plugin 'dracula/vim'
+Plugin 'nightsense/seabird'
 
 "
 " " All of your Plugins must be added before the following line
@@ -89,7 +94,7 @@ let NERDTreeIgnore = ['\.pyc$']
 " colors
 set background=dark
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'Dracula',
       \ 'active':  {
 		    \ 'left': [ [ 'mode', 'paste' ],
 		    \           [ 'readonly', 'filename', 'modified', 'gitbranch' ] ] },
@@ -97,7 +102,8 @@ let g:lightline = {
   \     'gitbranch': 'fugitive#head',
   \   }
       \ }
-colorscheme nord
+set laststatus=2
+colorscheme dracula
 
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
@@ -113,3 +119,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
