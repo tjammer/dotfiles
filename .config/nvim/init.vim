@@ -2,31 +2,34 @@ let g:python3_host_prog = '/usr/bin/python3'
 if &compatible
 set nocompatible endif
 endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state(expand('~/.vim/dein'))
-    call dein#begin(expand('~/.vim/dein'))
+if dein#load_state(expand('~/.config/nvim/dein'))
+    call dein#begin(expand('~/.config/nvim/dein'))
 
     call dein#add('Shougo/dein.vim', {'rtp':''})
 
-    call dein#add('Valloric/YouCompleteMe', {'on_i': 1})
+    call dein#add('Shougo/deoplete.nvim', {'on_i': 1})
+    call dein#add('deoplete-plugins/deoplete-clang', {'on_i': 1})
     call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'})
     call dein#add('ctrlpvim/ctrlp.vim', {'on_cmd': 'CtrlP'})
     call dein#add('tpope/vim-fugitive')
     call dein#add('airblade/vim-gitgutter')
-    call dein#add('vim-syntastic/syntastic')
+    call dein#add('w0rp/ale')
 
-    call dein#add('itchyny/lightline.vim')
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('tjammer/blayu.vim')
+    call dein#add('tjammer/blandon.vim')
     call dein#add('jiangmiao/auto-pairs')
     call dein#add('MarcWeber/vim-addon-local-vimrc')
-    call dein#add('alpertuna/vim-header')
-    call dein#add('tjammer/blayu.vim')
 
-    call dein#add('octol/vim-cpp-enhanced-highlight', 
+    call dein#add('octol/vim-cpp-enhanced-highlight',
                 \{'on_ft': ['c', 'cpp']})
     call dein#add('rhysd/vim-clang-format',
-                \{'on_ft': ['c', 'cpp']})
+                \{'on_ft': ['c', 'cpp', 'glsl']})
     call dein#add('drmikehenry/vim-headerguard',
+                \{'on_ft': ['c', 'cpp']})
+    call dein#add('sakhnik/nvim-gdb',
                 \{'on_ft': ['c', 'cpp']})
 
     call dein#add('rust-lang/rust.vim',
@@ -57,10 +60,11 @@ set number
 set relativenumber
 set hlsearch
 
-" ycm
- let g:ycm_autoclose_preview_window_after_completion=1
 " nerdtree
+let g:NERDTreeMouseMode=2
 nnoremap <c-t> :NERDTreeToggle<CR>
+nnoremap <c-f> :NERDTreeFind<CR>
+
 " ctrlp
 let g:ctrlp_map = '<c-p>'
 map <c-p> :CtrlP<CR>
@@ -72,14 +76,8 @@ set expandtab |
 set autoindent |
 set fileformat=unix
 set encoding=utf-8
-set wildmenu
-set showcmd
 set ignorecase
 set smartcase
-
-au FileType python setl sw=4 sts=4 shiftwidth=4 et
-
-let g:tex_flavor = 'latex'
 
 set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·
 " set list!
@@ -99,23 +97,25 @@ omap <c-c> <esc>
 
 " colors
 set termguicolors
-colorscheme blayu
-source ~/.vim/line.vim
-set laststatus=2
+colorscheme blandon
 set noshowmode
+let g:airline_theme = "blandon"
+let g:airline_powerline_fonts = 1
 
-" cursor
-" konsole
-" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-" let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-" vte
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+"cursor
+set guicursor=n-v-c:block-Cursor/Cursor,i-ci-ve:block-blinkon1-iCursor/iCursor
 
-" vim-header settings
-let g:header_field_author = 'Tobias Jammer'
-let g:header_field_author_email = 'tobiasjammer@gmail.com'
-let g:header_auto_add_header = 0
-let g:header_field_modified_by = 0
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#camel_case = 1
+inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" deoplete clang
+let g:deoplete#sources#clang#libclang_path = expand("~/.config/nvim/clang/lib/libclang.so.7")
+let g:deoplete#sources#clang#clang_header = expand("~/.config/nvim/clang/lib/clang")
+
+" ALE
+let g:ale_linters = {
+\   'cpp': ['clangcheck', 'clangd', 'clangtidy', 'cppcheck'],
+\}
+map <leader>g :ALEGoToDefinitionInSplit<CR>
