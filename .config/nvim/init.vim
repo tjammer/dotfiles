@@ -10,42 +10,35 @@ if dein#load_state(expand('~/.config/nvim/dein'))
     call dein#add('Shougo/dein.vim', {'rtp':''})
 
     call dein#add('Shougo/deoplete.nvim', {'on_i': 1})
-    call dein#add('deoplete-plugins/deoplete-clang', {'on_i': 1})
-    call dein#add('scrooloose/nerdtree', {'on_cmd': 'NERDTreeToggle'})
+    call dein#add('autozimu/LanguageClient-neovim', {
+    \ 'build': 'bash install.sh',
+    \ })
     call dein#add('ctrlpvim/ctrlp.vim', {'on_cmd': 'CtrlP'})
-    call dein#add('tpope/vim-fugitive')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('w0rp/ale')
 
-    call dein#add('vim-airline/vim-airline')
-    call dein#add('tjammer/blayu.vim')
-    call dein#add('tjammer/blandon.vim')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('tpope/vim-surround')
+    call dein#add('tpope/vim-commentary')
+    call dein#add('tpope/vim-sensible')
+    call dein#add('tpope/vim-vinegar')
+    call dein#add('tpope/vim-sleuth')
     call dein#add('jiangmiao/auto-pairs')
     call dein#add('MarcWeber/vim-addon-local-vimrc')
 
-    call dein#add('octol/vim-cpp-enhanced-highlight',
-                \{'on_ft': ['c', 'cpp']})
+    " fluff
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('tjammer/blayu.vim')
+    call dein#add('tjammer/blandon.vim')
+    call dein#add('ayu-theme/ayu-vim')
+    call dein#add('rakr/vim-one')
+
+    " languages
+    call dein#add('sheerun/vim-polyglot')
     call dein#add('rhysd/vim-clang-format',
                 \{'on_ft': ['c', 'cpp', 'glsl']})
     call dein#add('drmikehenry/vim-headerguard',
                 \{'on_ft': ['c', 'cpp']})
-    call dein#add('sakhnik/nvim-gdb',
-                \{'on_ft': ['c', 'cpp']})
-
-    call dein#add('rust-lang/rust.vim',
-                \{'on_ft': ['rust']})
-
-    call dein#add('python-mode/python-mode',
-                \{'on_ft': ['python']})
-
-    call dein#add('lervag/vimtex',
-                \{'on_ft': ['tex']})
-
-    call dein#add('tikhomirov/vim-glsl',
-                \{'on_ft': ['glsl']})
-
-    call dein#add('calviken/vim-gdscript3',
-                \{'on_ft': ['gdscript3']})
 
     call dein#end()
 
@@ -60,27 +53,15 @@ set number
 set relativenumber
 set hlsearch
 
-" nerdtree
-let g:NERDTreeMouseMode=2
-nnoremap <c-t> :NERDTreeToggle<CR>
-nnoremap <c-f> :NERDTreeFind<CR>
-
 " ctrlp
 let g:ctrlp_map = '<c-p>'
 map <c-p> :CtrlP<CR>
 
-set tabstop=2 |
-set softtabstop=2 |
-set shiftwidth=2 |
-set expandtab |
-set autoindent |
 set fileformat=unix
-set encoding=utf-8
 set ignorecase
 set smartcase
 
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,space:·
-" set list!
+set list
 
 let mapleader=","
 
@@ -90,10 +71,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nmap <c-c> <esc>
-imap <c-c> <esc>
-vmap <c-c> <esc>
-omap <c-c> <esc>
+inoremap jj <esc>
+vnoremap jj <esc>
+onoremap jj <esc>
 
 " colors
 set termguicolors
@@ -110,12 +90,27 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#camel_case = 1
 inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" deoplete clang
-let g:deoplete#sources#clang#libclang_path = expand("~/.config/nvim/clang/lib/libclang.so.7")
-let g:deoplete#sources#clang#clang_header = expand("~/.config/nvim/clang/lib/clang")
-
 " ALE
 let g:ale_linters = {
-\   'cpp': ['clangcheck', 'clangd', 'clangtidy', 'cppcheck'],
+\ 'cpp': ['clangd', 'clang-tidy'],
 \}
-map <leader>g :ALEGoToDefinitionInSplit<CR>
+
+" for commentary.vim
+autocmd FileType c,cpp,java setlocal commentstring=//\ %s
+
+" 
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'cpp': ['/usr/bin/clangd'],
+    \ }
+
+nnoremap <silent> <leader>i :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>g <c-w>v:call LanguageClient#textDocument_definition()<CR>
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" do not jump to last occurence on '#'
+nnoremap # m`:keepjumps normal! #``<cr>
+
+autocmd BufNewFile,BufRead *.sc set syntax=c
